@@ -1,0 +1,180 @@
+<mxGraphModel>
+  <root interfaceid="6d333cf1-6eb9-46ad-b6f7-a435dc355000" interfacename="VUEJS WEB SERVER FOR CRUD OPERATIONS">
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="2" value="&lt;h1 style=&quot;margin:0px;&quot;&gt;Web Server&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;images/icons48/webserver.png&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;" parent="1" vertex="1" connectable="0">
+      <mxGeometry x="290" y="240" width="100" height="100" as="geometry">
+        <mxRectangle width="100" height="40" as="alternateBounds" />
+      </mxGeometry>
+      <Object Type="ArcIntegratorConnectors.Receive.WebServer" as="data">
+        <Array as="Properties">
+          <Object Type="autoguid" Name="WebId" Value="f6e72062-ae5f-4645-b15f-7dea12a64830" />
+          <Object Type="string" Name="LoginPasswordID" Value="67910d6c-c5a4-45de-a373-a0ca082b5e98" />
+        </Array>
+      </Object>
+    </mxCell>
+    <mxCell id="3" value="Input" style="port;image=editors/images/overlays/flash.png;align=right;imageAlign=right;spacingRight=18" parent="2" vertex="1">
+      <mxGeometry y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="4" value="Error" style="port;image=editors/images/overlays/error.png;spacingLeft=18" parent="2" vertex="1">
+      <mxGeometry x="1" y="0.75" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="5" value="Output" style="port;image=editors/images/overlays/check.png;spacingLeft=18" parent="2" vertex="1">
+      <mxGeometry x="1" y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="6" value="&lt;h1 style=&quot;margin:0px;&quot;&gt;ArcNoSQLSender&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;images/icons48/ArcNoSQLSender.png&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;" parent="1" vertex="1" connectable="0">
+      <mxGeometry x="570" y="240" width="100" height="100" as="geometry">
+        <mxRectangle width="100" height="40" as="alternateBounds" />
+      </mxGeometry>
+      <Object Type="ArcIntegratorConnectors.Send.ArcNoSQLSender" as="data">
+        <Array as="Properties">
+          <Object Type="string" Name="ArcDatabaseID" Value="4e25ec28-2733-4039-8baa-50b76aeddee2" />
+          <Object Type="string" Name="CollectionName" Value="CustomerContacts" />
+          <Object Type="boolean" Name="InputIsArray" Value="0" />
+          <Object Type="boolean" Name="AutoCreateCollection" Value="1" />
+          <Object Type="integer" Name="RetryCount" Value="0" />
+          <Object Type="integer" Name="RetryInterval" Value="10000" />
+        </Array>
+      </Object>
+    </mxCell>
+    <mxCell id="7" value="Input" style="port;image=editors/images/overlays/flash.png;align=right;imageAlign=right;spacingRight=18" parent="6" vertex="1">
+      <mxGeometry y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="8" value="Error" style="port;image=editors/images/overlays/error.png;spacingLeft=18" parent="6" vertex="1">
+      <mxGeometry x="1" y="0.75" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="9" value="Output" style="port;image=editors/images/overlays/check.png;spacingLeft=18" parent="6" vertex="1">
+      <mxGeometry x="1" y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="10" value="" parent="1" source="5" target="7" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="11" value="&lt;h1 style=&quot;margin:0px;&quot;&gt;ArcNoSQLReceiver&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;images/icons48/ArcNoSQLReceiver.png&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;" parent="1" vertex="1" connectable="0">
+      <mxGeometry x="840" y="240" width="100" height="100" as="geometry">
+        <mxRectangle width="100" height="40" as="alternateBounds" />
+      </mxGeometry>
+      <Object Type="ArcIntegratorConnectors.Receive.ArcNoSQLReceiver" as="data">
+        <Array as="Properties">
+          <Object Type="string" Name="ArcDatabaseID" Value="4e25ec28-2733-4039-8baa-50b76aeddee2" />
+          <Object Type="string" Name="CollectionName" Value="CustomerContacts" />
+          <Object Type="text" Name="Filter" Value="" />
+          <Object Type="boolean" Name="FilterIsExpression" Value="0" />
+          <Object Type="integer" Name="MaxDocuments" Value="100" />
+          <Object Type="integer" Name="RetryCount" Value="0" />
+          <Object Type="integer" Name="RetryInterval" Value="10000" />
+        </Array>
+      </Object>
+    </mxCell>
+    <mxCell id="12" value="Input" style="port;image=editors/images/overlays/flash.png;align=right;imageAlign=right;spacingRight=18" parent="11" vertex="1">
+      <mxGeometry y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="13" value="Error" style="port;image=editors/images/overlays/error.png;spacingLeft=18" parent="11" vertex="1">
+      <mxGeometry x="1" y="0.75" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="14" value="Output" style="port;image=editors/images/overlays/check.png;spacingLeft=18" parent="11" vertex="1">
+      <mxGeometry x="1" y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="15" value="" parent="1" source="9" target="12" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="16" value="&lt;h1 style=&quot;margin:0px;&quot; type=&quot;WebResponse&quot;&gt;WebResponse&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;images/icons48/webresponse.png&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;" parent="1" vertex="1" connectable="0">
+      <mxGeometry x="1090" y="240" width="100" height="100" as="geometry">
+        <mxRectangle width="100" height="40" as="alternateBounds" />
+      </mxGeometry>
+      <Object Type="ArcIntegratorConnectors.Send.WebResponse" as="data">
+        <Array as="Properties" />
+      </Object>
+    </mxCell>
+    <mxCell id="17" value="Input" style="port;image=editors/images/overlays/flash.png;align=right;imageAlign=right;spacingRight=18" parent="16" vertex="1">
+      <mxGeometry y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="18" value="Error" style="port;image=editors/images/overlays/error.png;spacingLeft=18" parent="16" vertex="1">
+      <mxGeometry x="1" y="0.75" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="19" value="Output" style="port;image=editors/images/overlays/check.png;spacingLeft=18" parent="16" vertex="1">
+      <mxGeometry x="1" y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="20" value="" parent="1" source="14" target="17" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="21" value="&lt;h1 style=&quot;margin:0px;&quot;&gt;Finish&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;images/icons48/finish.png&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;" parent="1" vertex="1" connectable="0">
+      <mxGeometry x="1350" y="240" width="100" height="100" as="geometry">
+        <mxRectangle width="100" height="40" as="alternateBounds" />
+      </mxGeometry>
+      <Object Type="ArcIntegratorTransformers.Finish" as="data">
+        <Array as="Properties" />
+      </Object>
+    </mxCell>
+    <mxCell id="22" value="Input" style="port;image=editors/images/overlays/flash.png;align=right;imageAlign=right;spacingRight=18" parent="21" vertex="1">
+      <mxGeometry y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="23" value="Error" style="port;image=editors/images/overlays/error.png;spacingLeft=18" parent="21" vertex="1">
+      <mxGeometry x="1" y="0.75" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="24" value="Output" style="port;image=editors/images/overlays/check.png;spacingLeft=18" parent="21" vertex="1">
+      <mxGeometry x="1" y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="25" value="" parent="1" source="19" target="22" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="26" value="&lt;h1 style=&quot;margin:0px;&quot; type=&quot;WebResponse&quot;&gt;WebResponse&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;images/icons48/webresponse.png&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;" parent="1" vertex="1" connectable="0">
+      <mxGeometry x="840" y="410" width="100" height="100" as="geometry">
+        <mxRectangle width="100" height="40" as="alternateBounds" />
+      </mxGeometry>
+      <Object Type="ArcIntegratorConnectors.Send.WebResponse" as="data">
+        <Array as="Properties" />
+      </Object>
+    </mxCell>
+    <mxCell id="27" value="Input" style="port;image=editors/images/overlays/flash.png;align=right;imageAlign=right;spacingRight=18" parent="26" vertex="1">
+      <mxGeometry y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="28" value="Error" style="port;image=editors/images/overlays/error.png;spacingLeft=18" parent="26" vertex="1">
+      <mxGeometry x="1" y="0.75" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="29" value="Output" style="port;image=editors/images/overlays/check.png;spacingLeft=18" parent="26" vertex="1">
+      <mxGeometry x="1" y="0.25" width="16" height="16" relative="1" as="geometry">
+        <mxPoint x="-8" y="-8" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="30" value="" parent="1" source="8" target="27" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="31" value="" parent="1" source="29" target="22" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
