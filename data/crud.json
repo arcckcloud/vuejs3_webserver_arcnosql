@@ -1,0 +1,28 @@
+[
+    {
+       "_id": "ALFKI",
+       "Address": "A",
+       "City": "B",
+       "Region": "C",
+       "PostalCode": "D",
+       "Country": "E",
+       "Phone": "F",
+       "Fax": "G",
+   "__action" : "UPDATE"
+   }, 
+   {
+       "_id": "ANATR",
+       "__action" : "DELETE"
+   }, 
+   {
+       "_id": "XXXXX",
+       "Address": "Mataderos  2312",
+       "City": "México D.F.",
+       "Region": null,
+       "PostalCode": "05023",
+       "Country": "Mexico",
+       "Phone": "(5) 555-3932",
+       "Fax": null,
+   "__action" : "INSERT"
+   }
+]

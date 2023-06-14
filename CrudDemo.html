@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/css/style.css" rel="stylesheet">
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/vuejs/polyfill.min.js"></script>
+    <script src="lib/vuejs/axios.min.js"></script>
+    <script src="lib/vuejs/vue.min.js"></script>
+</head>
+<body>
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <a href="/" class="logo"><img src="lib/image/logo.png" alt="ARCCKCLOUD" class="img-fluid"></a>
+            <h1 class="logo"><a href="#">ARCCKCLOUD</a></h1>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+                    <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#News">News</a></li>
+                    <li><a class="nav-link scrollto" href="#Documentation">Documentation</a></li>
+                    <li><a class="nav-link scrollto" target="_blank" href="https://www.youtube.com/@arcckcloud/videos">Videos</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>  
+    
+    <div class="container">
+        <main role="main" class="pb-3">
+
+            <div id="app">
+                <img v-if="IsLoading" src="images/loading.gif" class="loading" />
+                <h1>List of Customer Contacts</h1>
+                <table class="table">
+                    <tr>
+                        <th v-for="(column,index) in Headers">
+                            {{column}}
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                    <tr v-for="(record,index) in Records">
+                        <td v-for="(column,indexx) in Columns">
+                            <span v-if="index != EditIndex">{{record[column]}}</span>
+                            <input v-else v-model="Records[EditIndex][column]">
+                        </td>
+                        <td>
+                            <i class="bi bi-save" v-on:click="Save(index)"></i>
+                            <i class="bi bi-x" v-on:click="Cancel(index)"></i>
+                        
+                            <i class="bi bi-pencil-square" v-on:click="Edit(index)"></i>
+                            <i class="bi bi-trash" v-on:click="Delete(index)"></i>
+                            
+                        </td>
+                    </tr>                   
+                </table>
+                <button class="btn btn-primary" v-on:click="AddRow()">Add New Record</button>
+            </div>
+
+        </main>
+    </div>
+    
+    <script type="text/javascript">
+        var demoApp = new Vue({
+            el: '#app',
+            data: {
+                ApiCrudUrl: "https://arcckcloud.com:5555/api/Web/ProcessJson?id=f6e72062-ae5f-4645-b15f-7dea12a64830",
+                ApiGetAllUrl: "https://arcckcloud.com:5555/api/Web/ProcessJson?id=f6e72062-ae5f-4645-b15f-7dea12a64831",
+                IsLoading: false,
+                Headers: ["Id","Address","City","Region","PostalCode","Country","Phone","Fax"],
+                Columns: ["_id","Address","City","Region","PostalCode","Country","Phone","Fax"],
+                Records: [
+                ],
+                EditIndex: -1,
+                Adding: false
+            },
+            mounted: function() {
+                this.IsLoading = true;
+                var me = this;
+                axios({
+                    method: 'post',
+                    url: this.ApiGetAllUrl,
+                    data: {},
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic ' + btoa('vuejs' + ':' + 'vuejs')
+                    }
+                }).then(function (response) {
+                    if (typeof response.data === 'string') {
+                        alert(response.data);
+                    } else if (Array.isArray(response.data)) {
+                        me.Records = response.data;
+                    }
+                    me.IsLoading = false;
+                    me.EditIndex = -1;
+                });
+            },
+            methods: {
+                Save: function(index){
+                    var payload = this.Records[index];
+                    if (this.Adding){
+                        payload.__action = "INSERT";
+                    } else {
+                        payload.__action = "UPDATE";
+                    }
+                    this.IsLoading = true;
+                    var me = this;
+                    axios({
+                        method: 'post',
+                        url: this.ApiCrudUrl,
+                        data: payload,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Basic ' + btoa('vuejs' + ':' + 'vuejs')
+                        }
+                    }).then(function (response) {
+                        if (typeof response.data === 'string') {
+                            alert(response.data);
+                        } else if (Array.isArray(response.data)) {
+                            me.Records = response.data;
+                            me.Adding = false;
+                        }
+                        me.IsLoading = false;
+                        me.EditIndex = -1;
+                    });
+                },
+                Delete: function(index){
+                    var payload = this.Records[index];
+                    payload.__action = "DELETE";
+                    this.IsLoading = true;
+                    var me = this;
+                    axios({
+                        method: 'post',
+                        url: this.ApiCrudUrl,
+                        data: payload,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Basic ' + btoa('vuejs' + ':' + 'vuejs')
+                        }
+                    }).then(function (response) {
+                        if (typeof response.data === 'string') {
+                            alert(response.data);
+                        } else if (Array.isArray(response.data)) {
+                            me.Records = response.data;
+                        }
+                        me.IsLoading = false;
+                        me.EditIndex = -1;
+                    });
+                },
+                Edit: function(index) {
+                    this.EditIndex = index;
+                },
+                AddRow: function() {
+                    var newRecord = {
+                        _id: "",
+                        Address: "",
+                        City: "",
+                        Region: "",
+                        PostalCode: "",
+                        Country: "",
+                        Phone: "",
+                        Fax: ""
+                    };
+                    this.Records.push(newRecord);
+                    this.EditIndex = this.Records.length -1;
+                    this.Adding = true;
+                }
+            }
+        });
+    </script>
+</div>     
+</body>
+</html>
