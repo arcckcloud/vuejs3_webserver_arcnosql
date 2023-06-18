@@ -1,0 +1,403 @@
+[
+    {
+      "_id": "AL001",
+      "name": "Zog",
+      "species": "Gloobian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL002",
+      "name": "Luna",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL003",
+      "name": "Gruk",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL004",
+      "name": "Nebula",
+      "species": "Stellaran",
+      "planet": "Nova Prime",
+      "affiliation": "Celestial Union",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL005",
+      "name": "Xar",
+      "species": "Xenonian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL006",
+      "name": "Vex",
+      "species": "Vulcanian",
+      "planet": "Vulcan",
+      "affiliation": "United Planets",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL007",
+      "name": "Astra",
+      "species": "Astrolian",
+      "planet": "Astroa",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL008",
+      "name": "Zara",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL009",
+      "name": "Orion",
+      "species": "Orionite",
+      "planet": "Orion",
+      "affiliation": "Stellar Confederation",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL010",
+      "name": "Lumos",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL011",
+      "name": "Xeno",
+      "species": "Xenonian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL012",
+      "name": "Zara",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL013",
+      "name": "Lumo",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL014",
+      "name": "Gloo",
+      "species": "Gloobian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL015",
+      "name": "Nova",
+      "species": "Stellaran",
+      "planet": "Nova Prime",
+      "affiliation": "Celestial Union",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL016",
+      "name": "Vulcan",
+      "species": "Vulcanian",
+      "planet": "Vulcan",
+      "affiliation": "United Planets",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL017",
+      "name": "Astro",
+      "species": "Astrolian",
+      "planet": "Astroa",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL018",
+      "name": "Zar",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL019",
+      "name": "Orin",
+      "species": "Orionite",
+      "planet": "Orion",
+      "affiliation": "Stellar Confederation",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL020",
+      "name": "Lumo",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL021",
+      "name": "Gruk",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL022",
+      "name": "Zog",
+      "species": "Gloobian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL023",
+      "name": "Luna",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL024",
+      "name": "Gruk",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL025",
+      "name": "Nebula",
+      "species": "Stellaran",
+      "planet": "Nova Prime",
+      "affiliation": "Celestial Union",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL026",
+      "name": "Xar",
+      "species": "Xenonian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL027",
+      "name": "Vex",
+      "species": "Vulcanian",
+      "planet": "Vulcan",
+      "affiliation": "United Planets",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL028",
+      "name": "Astra",
+      "species": "Astrolian",
+      "planet": "Astroa",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL029",
+      "name": "Zara",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL030",
+      "name": "Orion",
+      "species": "Orionite",
+      "planet": "Orion",
+      "affiliation": "Stellar Confederation",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL031",
+      "name": "Lumos",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL032",
+      "name": "Xeno",
+      "species": "Xenonian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL033",
+      "name": "Zara",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL034",
+      "name": "Lumo",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL035",
+      "name": "Gloo",
+      "species": "Gloobian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL036",
+      "name": "Nova",
+      "species": "Stellaran",
+      "planet": "Nova Prime",
+      "affiliation": "Celestial Union",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL037",
+      "name": "Vulcan",
+      "species": "Vulcanian",
+      "planet": "Vulcan",
+      "affiliation": "United Planets",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL038",
+      "name": "Astro",
+      "species": "Astrolian",
+      "planet": "Astroa",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL039",
+      "name": "Zar",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL040",
+      "name": "Orin",
+      "species": "Orionite",
+      "planet": "Orion",
+      "affiliation": "Stellar Confederation",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL041",
+      "name": "Lumo",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL042",
+      "name": "Gruk",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL043",
+      "name": "Zog",
+      "species": "Gloobian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL044",
+      "name": "Luna",
+      "species": "Lunarian",
+      "planet": "Moon",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL045",
+      "name": "Gruk",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL046",
+      "name": "Nebula",
+      "species": "Stellaran",
+      "planet": "Nova Prime",
+      "affiliation": "Celestial Union",
+      "clearanceLevel": 2
+    },
+    {
+      "_id": "AL047",
+      "name": "Xar",
+      "species": "Xenonian",
+      "planet": "Xenon",
+      "affiliation": "Galactic Alliance",
+      "clearanceLevel": 5
+    },
+    {
+      "_id": "AL048",
+      "name": "Vex",
+      "species": "Vulcanian",
+      "planet": "Vulcan",
+      "affiliation": "United Planets",
+      "clearanceLevel": 4
+    },
+    {
+      "_id": "AL049",
+      "name": "Astra",
+      "species": "Astrolian",
+      "planet": "Astroa",
+      "affiliation": "Cosmic Council",
+      "clearanceLevel": 3
+    },
+    {
+      "_id": "AL050",
+      "name": "Zara",
+      "species": "Zorblonian",
+      "planet": "Zorblon",
+      "affiliation": "Intergalactic Federation",
+      "clearanceLevel": 4
+    }
+  ]
+  

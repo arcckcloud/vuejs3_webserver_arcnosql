@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MIB</title>
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/css/style.css" rel="stylesheet">
+
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    
+    <script src="lib/vuejs/polyfill.min.js"></script>
+    <script src="lib/vuejs/axios.min.js"></script>
+    <script src="lib/vuejs/vue.min.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+
+        <header id="header" class="d-flex align-items-center">
+            <div class="container d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <a href="https://arcckcloud.com" class="logo"><img src="lib/image/logo.png" alt="ARCCKCLOUD" class="img-fluid"></a>
+                    &nbsp;
+                    <h1 class="logo"><a href="#">MIB {{TableName}}</a></h1>
+                </div>  
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li v-if="Agents"><a class="nav-link scrollto" v-on:click="ShowAgents()">Agents</a></li>
+                        <li v-if="Aliens"><a class="nav-link scrollto" v-on:click="ShowAliens()">Aliens</a></li>
+                        <li v-if="!LoggedIn"><a class="nav-link scrollto" v-on:click="ShowLogin()">Login</a></li>
+                        <li v-if="LoggedIn"><a class="nav-link scrollto" v-on:click="Logout()">Logout</a></li>
+                        <li><a class="nav-link scrollto" target="_blank" href="https://www.youtube.com/@arcckcloud/videos">Source</a></li>
+                        <li><a class="nav-link scrollto" target="_blank" href="https://www.youtube.com/@arcckcloud/videos">Video</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+            </div>
+        </header>
+
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input type="text" class="form-control" v-model="UserName" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" v-model="Password" placeholder="Enter your password">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-danger">{{LoginError}}</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="HideLogin()">Cancel</button>
+                  <button type="submit" class="btn btn-primary" v-on:click="Login()">Login</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                <div id="app">
+                    <img v-if="IsBusy" src="images/loading.gif" class="loading" />
+                    
+                    <div class="row">
+                        <div class="col-md-12" v-if="Records.length > 0">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th v-for="(column,index) in Columns">
+                                            {{column}}
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(row,indexx) in Records">
+                                        <td v-for="(column,index) in Columns">
+                                            <span>{{row[column]}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>     
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+</body>
+<script type="text/javascript">
+    var mibapp = new Vue({
+        el: '#app',
+        data: {
+            Agents: false,
+            Aliens: false,
+            LoggedIn: false,
+            UserName: "",
+            Password: "",
+            LoginError: "",
+            Token: "",
+            DecodedToken: {},
+            apiLoginUrl: "https://arcckcloud.com/arcintegratorapi/api/TokenServices/GetJwtToken",
+            apiRetrieveAgentsUrl: "https://arcckcloud.com/arcintegratorapi/api/WebJwt/ProcessJson?id=71bcc37f-1d18-4922-af65-3ed310776a04",
+            apiRetrieveAliensUrl: "https://arcckcloud.com/ArcIntegratorAPI/api/WebJwt/ProcessJson?id=71bcc37f-1d18-4922-af65-3ed310776a05",
+            Columns: [],
+            IsBusy: false,
+            Records: [],
+            TableName: ""
+        },
+        methods: {
+            ShowLogin: function(){
+                $('#loginModal').modal('show');               
+            },
+            HideLogin: function() {
+                $('#loginModal').modal('hide');
+            },
+            Login: function(){
+                var me = this;
+                axios({
+                    method: 'post',
+                    url: me.apiLoginUrl,
+                    data: {
+                        ClientID: me.UserName,
+                        ClientSecret: me.Password,
+                        IamId: "F5AB103A090A4DF5838AE32AC03CCFEB4D0AD5D0215F4CD8B78AF9D64544CC26"
+                    },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    if (typeof response.data === 'string') {
+                        me.LoggedIn = true;
+                        me.Token = response.data;
+                        me.DecodeJWT();
+                        me.HideLogin();
+                        me.LoginError = "";
+                    } else if (typeof response.data === 'object') {
+                        me.LoginError = "Invalid login/password";
+                    }
+                }).catch(function(error){
+                    me.LoginError = "Invalid login/password";
+                });
+            },
+            DecodeJWT: function() {
+                var token = {};
+                token.raw = this.Token;
+                token.header = JSON.parse(window.atob(this.Token.split('.')[0]));
+                token.payload = JSON.parse(window.atob(this.Token.split('.')[1]));
+                if(token.payload.hasOwnProperty("ArcApplicationRole")){
+                    this.Aliens = token.payload.ArcApplicationRole.indexOf("Aliens:Admin") > -1;
+                    this.Agents = token.payload.ArcApplicationRole.indexOf("Agents:Admin") > -1;
+                }
+                this.DecodedToken = token;
+            },
+            ShowAgents: function(){
+                var me = this;
+                this.IsBusy = true;
+                this.TableName = "Agents";
+                axios({
+                    method: 'post',
+                    url: me.apiRetrieveAgentsUrl,
+                    data: {},
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + me.Token
+                    }
+                }).then(function (response) {
+                    if (typeof response.data === 'string') {
+                        alert(response.data);
+                    } else if (Array.isArray(response.data)) {
+                        me.Records = response.data;
+                        if (me.Records.length > 0){
+                            me.Columns = Object.keys(me.Records[0]);
+                        }
+                    }
+                    me.IsBusy = false;
+                }).catch(function(error){
+                    alert(JSON.stringify(error));
+                });
+            },
+            ShowAliens: function(){
+                var me = this;
+                this.IsBusy = true;
+                this.TableName = "Aliens";
+                axios({
+                    method: 'post',
+                    url: me.apiRetrieveAliensUrl,
+                    data: {},
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + me.Token
+                    }
+                }).then(function (response) {
+                    if (typeof response.data === 'string') {
+                        alert(response.data);
+                    } else if (Array.isArray(response.data)) {
+                        me.Records = response.data;
+                        if (me.Records.length > 0){
+                            me.Columns = Object.keys(me.Records[0]);
+                        }
+                    }
+                    me.IsBusy = false;
+                }).catch(function(error){
+                    alert(JSON.stringify(error));
+                });
+            },
+            Logout: function() {
+                this.LoggedIn = false;
+                this.Aliens = false;
+                this.Agents = false;
+                this.Records = [];
+                this.Columns = [];
+                this.TableName = "";
+            }          
+        }
+    });
+</script>
+</body>
+</html>
