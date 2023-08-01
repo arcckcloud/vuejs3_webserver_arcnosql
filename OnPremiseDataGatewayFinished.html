@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Page</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/css/style.css" rel="stylesheet">
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/vuejs/polyfill.min.js"></script>
+    <script src="lib/vuejs/axios.min.js"></script>
+    <script src="lib/vuejs/vue.min.js"></script>
+</head>
+<body>
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <a href="/" class="logo"><img src="lib/image/logo.png" alt="ARCCKCLOUD" class="img-fluid"></a>
+            <h1 class="logo"><a href="#">On-Premise Data Gateway Demo</a></h1>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="https://github.com/arcckcloud/vuejs3_webserver_arcnosql">Source</a></li>
+                    <li><a class="nav-link scrollto" target="_blank" href="https://www.youtube.com/watch?v=PoLLGJpJlZs">Videos</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div id="app">
+                <img v-if="IsBusy" src="images/loading.gif" class="loading" />
+                
+                <h1>Customers</h1>
+                
+                <div class="row">
+                    <div class="col-md-12" v-if="Records.length > 0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th v-for="(column,index) in Headers">
+                                        {{column}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(row,indexx) in Records">
+                                    <td v-for="(column,index) in Columns">
+                                        <span v-if="indexx == EditIndex">
+                                            <input v-model="Records[EditIndex][column]" v-if="index != 0 || Adding">
+                                            <span v-else> {{row[column]}}</span>
+                                        </span>
+                                        <span v-else> {{row[column]}}</span>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>     
+                    </div>
+                </div>
+            </div>
+    </main>
+</div>
+<script type="text/javascript">
+    var tablesapp = new Vue({
+        el: '#app',
+        data: {
+            Headers: ["Id","Address","City","Region","PostalCode","Country","Phone","Fax"],
+            Columns: ["_id","Address","City","Region","PostalCode","Country","Phone","Fax"],
+            apiFetchUrl: "https://arcckcloud.com/arcintegratorapi/api/Web/ProcessJson?id=9dc62e2f-be0c-44cf-814a-c5fd944b2b36&iamid=F5AB103A090A4DF5838AE32AC03CCFEB4D0AD5D0215F4CD8B78AF9D64544CC26",
+            IsBusy: false,
+            Records: [],
+            EditIndex: -1,
+            Adding: false
+        },
+
+        mounted: function () {
+            var me = this;
+            this.IsBusy = true;
+            axios({
+                method: 'post',
+                url: me.apiFetchUrl,
+                data: "{}",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + btoa('k@mib.com' + ':' + 'mib!123')
+                }
+            }).then(function (response) {
+                if (typeof response.data === 'string') {
+                    alert(response.data);
+                } else if (Array.isArray(response.data)) {
+                    me.Records = response.data;
+                }
+                me.IsBusy = false;
+            });
+        }
+    });
+</script>
+        
+</body>
+</html>
